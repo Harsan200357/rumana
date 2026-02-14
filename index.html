@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Rumana ❤️</title>
+
+<!-- Google Font: Dancing Script -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dancing Script', cursive; /* Romantic font */
+    overflow: hidden;
+    background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
+    color: white;
+    text-align: center;
+}
+
+/* Stars */
+.star {
+    width: 2px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+h1 {
+    margin-top: 70px;
+    font-size: 26px;
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background: white;
+    color: #ff4d6d;
+    position: absolute;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* Love Letter Page */
+#letterPage {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.letterBox {
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 400px;
+    margin: 80px auto;
+    box-shadow: 0 0 30px pink;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Rumana ❤️</h1>
+<h1>Will You Be My Valentine? 💍</h1>
+
+<button id="yesBtn" class="btn">Yes 💖</button>
+<button id="noBtn" class="btn">No 😢</button>
+
+<div id="message"></div>
+
+<!-- Love Letter Page -->
+<div id="letterPage">
+    <div class="letterBox" id="letterText"></div>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+const letterPage = document.getElementById("letterPage");
+const letterText = document.getElementById("letterText");
+
+/* YES CLICK */
+yesBtn.addEventListener("click", function() {
+    message.innerHTML = "You chose YES ❤️🥰";
+    fireworks();
+    setTimeout(showLetter, 1500);
+});
+
+/* Love Letter Content */
+const loveLetter = `My Dearest Rumana ❤️,
+
+From the moment you came into my life,
+everything felt brighter and more meaningful.
+
+You are my peace in chaos,
+my happiness in sadness,
+my forever in this temporary world.
+
+Every heartbeat of mine whispers your name.
+Every dream of mine begins with you.
+
+I don’t just want today…
+I want every tomorrow with you.
+
+Forever yours,
+Hafees ❤️`;
+
+/* Typewriter Effect */
+function showLetter() {
+    letterPage.style.display = "block";
+    let i = 0;
+    function typing() {
+        if (i < loveLetter.length) {
+            letterText.innerHTML += loveLetter.charAt(i);
+            i++;
+            setTimeout(typing, 40);
+        }
+    }
+    typing();
+}
+
+/* RUNNING NO BUTTON */
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+/* Floating Hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+}
+setInterval(createHeart, 500);
+
+/* Stars Generator */
+for (let i = 0; i < 100; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+    document.body.appendChild(star);
+}
+
+/* Fireworks */
+function fireworks() {
+    for (let i = 0; i < 50; i++) {
+        let spark = document.createElement("div");
+        spark.style.position = "fixed";
+        spark.style.width = "5px";
+        spark.style.height = "5px";
+        spark.style.background = "gold";
+        spark.style.borderRadius = "50%";
+        spark.style.left = "50%";
+        spark.style.top = "50%";
+        spark.style.transition = "1s";
+        document.body.appendChild(spark);
+
+        setTimeout(() => {
+            spark.style.left = Math.random() * 100 + "vw";
+            spark.style.top = Math.random() * 100 + "vh";
+            spark.style.opacity = "0";
+        }, 50);
+
+        setTimeout(() => spark.remove(), 1000);
+    }
+}
+</script>
+
+</body>
+</html>
